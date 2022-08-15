@@ -201,7 +201,7 @@ function playClip(element, framesPerSecond) {
 
       return;
     }
-
+    //    console.log('Here');
     // Loop around if we go outside the stack
     if (newImageIdIndex >= imageCount) {
       newImageIdIndex = 0;
@@ -264,6 +264,7 @@ function playClip(element, framesPerSecond) {
     playClipTimeouts.isTimeVarying
   ) {
     playClipData.usingFrameTimeVector = true;
+    console.log('Using setTimeout');
     playClipData.intervalId = setTimeout(function playClipTimeoutHandler() {
       playClipData.intervalId = setTimeout(
         playClipTimeoutHandler,
@@ -272,6 +273,7 @@ function playClip(element, framesPerSecond) {
       playClipAction();
     }, 0);
   } else {
+    console.log('using setInterval');
     // ... otherwise user setInterval implementation which is much more efficient.
     playClipData.usingFrameTimeVector = false;
     playClipData.intervalId = setInterval(
